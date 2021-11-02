@@ -3,12 +3,12 @@ import mysql.connector
 
 
 with Imbox('imap.gmail.com',
-        username = 'krishnaharishshetty@gmail.com',
-        password = '-----',
+        username = '',
+        password = '',
         ssl=True,
         ssl_context=None,
         starttls=False) as imbox:
-        inbox = imbox.messages(sent_from = 'krishna.shetty@somaiya.edu')
+        inbox = imbox.messages(sent_from = '')
 
         for uid,message in inbox:
             message.sent_from
@@ -45,7 +45,7 @@ with Imbox('imap.gmail.com',
                 billing_address  = billing_address + temp + " "
             client_name = final[0]
 
-connection = mysql.connector.connect(host = 'localhost', database = 'invoicing', user = 'root', password = '-----')
+connection = mysql.connector.connect(host = 'localhost', database = 'invoicing', user = 'root', password = '')
 cursor = connection.cursor()
 cursor.callproc('insert_invoice', (invoice_num, client_name, invoice_date, billing_address))
 for x in product_list:
